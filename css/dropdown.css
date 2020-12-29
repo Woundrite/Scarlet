@@ -1,0 +1,108 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  user-select: none;
+  font-family: 'Poppins', sans-serif;
+}
+body{
+  background: #18191A;
+  overflow: hidden;
+}
+dist{
+  position: relative;
+}
+dist .drop-btn{
+  border-radius: 5px;
+  line-height: 30px;
+  font-size: 18px;
+  font-weight: 20;
+  color: #d6dae0;
+  padding: 0;
+  width: 7ch;
+  display: grid;
+  place-items: center;
+
+}
+
+.intermediate{
+  display: grid;
+  place-items: center;
+}
+
+dist .drop-btn:hover{
+  background-color: #313335;
+}
+
+dist .wrapper{
+  position: absolute;
+  top: 45px;
+  left: 5px;
+  display: flex;
+  width: 400px;
+  overflow: hidden;
+  border-radius: 5px;
+  background: #242526;
+  display: none;
+  transition: all 0.3s ease;
+}
+dist .wrapper.show{
+  display: block;
+  display: flex;
+}
+.wrapper ul{
+  width: 400px;
+  list-style: none;
+  padding: 10px;
+  transition: all 0.3s ease;
+}
+.wrapper ul li{
+  line-height: 55px;
+}
+.wrapper ul li a{
+  position: relative;
+  color: #d6dae0;
+  font-size: 18px;
+  font-weight: 500;
+  padding: 0 10px;
+  display: flex;
+  border-radius: 8px;
+  align-items: center;
+  text-decoration: none;
+}
+.wrapper ul li:hover a{
+  background: #3A3B3C;
+}
+
+ul li a i{
+  position: absolute;
+  right: 10px;
+  font-size: 25px;
+  pointer-events: none;
+}
+.wrapper ul.Edit-drop,
+.wrapper ul.File-drop,
+.wrapper ul.Prefrences-drop,
+.wrapper ul.Terminal-drop,
+.wrapper ul.Help-drop{
+  display: none;
+}
+.wrapper .arrow{
+  padding-left: 10px;
+  font-size: 20px;
+  font-weight: 500;
+  color: #d6dae0;
+  cursor: pointer;
+}
+.wrapper .arrow span{
+  margin-right: 15px;
+}
+
+sup{
+  size: 18;
+  font-style: italic;
+}
+
+.Filename{
+  position: relative;
+}

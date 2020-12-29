@@ -1,0 +1,233 @@
+<!Doctype html>
+<html>
+
+<head>
+  <title>
+    SCARLET
+  </title>
+  <link rel="stylesheet" href="css/index.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/dropdown.css">
+</head>
+<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
+<body>
+  <div class="Container">
+    <div class="TitleBar">
+      <div class="Title" style="height: 100%; padding: 0; width: 9.5vw; z-index: 1;">
+        <div class="navigation" style="height: 100%; width: 100%;">
+          <dist style="height: 100%; width: 100%;">
+            <div class="intermediate" style="padding: 0; margin: 0; height: 100%; width: 100%;">
+              <div class="drop-btn non-draggable">
+                Scarlet
+              </div>
+            </div>
+            <div class="wrapper non-draggable">
+              <ul class="menu-bar">
+                <li class="File-item"><a href="#">
+                    File <i class="fas fa-angle-right"></i>
+                  </a></li>
+                <li class="Edit-item"><a href="#">
+                    Edit<i class="fas fa-angle-right"></i>
+                  </a></li>
+                <li class="Prefrences-item"><a href="#">
+                    Prefrences<i class="fas fa-angle-right"></i>
+                  </a></li>
+                <li class="Terminal-item"><a href="#">
+                    Terminal<i class="fas fa-angle-right"></i>
+                  </a></li>
+                <li class="Help-item"><a href="#">
+                    Help<i class="fas fa-angle-right"></i>
+                  </a></li>
+              </ul>
+              <!-- File Menu-items -->
+              <ul class="File-drop">
+                <li class="arrow back-File-btn"><span class="fas fa-arrow-left"></span>File</li>
+                <li class="File-New"><a href="#">
+                    New File &nbsp < <sup>CTRL+N</sup>>
+                  </a></li>
+                <li class="File-New1"><a href="#">
+                    New Folder &nbsp < <sup>CTRL+N</sup>>
+                  </a></li>
+                <li class="File-Open"><a href="#">
+                    Open File &nbsp < <sup>CTRL+O</sup>>
+                  </a></li>
+                <li class="File-Open1"><a href="#">
+                    Open Folder &nbsp < <sup>CTRL+Shift+O</sup>>
+                  </a></li>
+                <li>
+                  <hr>
+                </li>
+                <li class="File-Close"><a href="#">
+                    Close &nbsp < <sup>CTRL+Q</sup>>
+                  </a></li>
+              </ul>
+              <!-- Edit Menu-items -->
+              <ul class="Edit-drop">
+                <li class="arrow back-Edit-btn"><span class="fas fa-arrow-left"></span>Edit</li>
+                <li class="Edit-Undo"><a href="#">
+                    Undo &nbsp < <sup>CTRL+Z</sup>>
+                  </a></li>
+                <li class="Edit-Redo"><a href="#">
+                    Redo &nbsp < <sup>CTRL+Y</sup>>
+                  </a></li>
+                <li>
+                  <hr>
+                </li>
+                <li class="Edit-Copy"><a href="#">
+                    Copy &nbsp < <sup>CTRL+C</sup>>
+                  </a></li>
+                <li class="Edit-Cut"><a href="#">
+                    Cut &nbsp < <sup>CTRL+X</sup>>
+                  </a></li>
+                <li class="Edit-Paste"><a href="#">
+                    Paste &nbsp < <sup>CTRL+V</sup>>
+                  </a></li>
+                <li>
+                  <hr>
+                </li>
+                <li class="Edit-Find"><a href="#">
+                    Find &nbsp < <sup>CTRL+F</sup>>
+                  </a></li>
+                <li class="Edit-Replace"><a href="#">
+                    Replace &nbsp < <sup>CTRL+H</sup>>
+                  </a></li>
+              </ul>
+
+              <ul class="Prefrences-drop">
+                <li class="arrow back-Prefrences-btn"><span class="fas fa-arrow-left"></span>Edit</li>
+                <li class="Prefrences-Themes"><a href="#">
+                    Themes
+                  </a></li>
+                <li class="Prefrences-Settings"><a href="#">
+                    Settings
+                  </a></li>
+              </ul>
+
+              <ul class="Terminal-drop">
+                <li class="arrow back-Terminal-btn"><span class="fas fa-arrow-left"></span>Edit</li>
+                <li class="Terminal-Create"><a href="#">
+                    Create Terminal &nbsp < <sup>CTRL+Shift+T</sup> >
+                  </a></li>
+                <li class="Terminal-split"><a href="#">
+                    Split Terminal &nbsp < <sup>CTRL+Shift+P</sup> >
+                  </a></li>
+                <li class="Terminal-Destroy"><a href="#">
+                    Destroy Terminal &nbsp < <sup>CTRL+Shift+D</sup> >
+                  </a></li>
+              </ul>
+
+              <ul class="Help-drop">
+                <li class="arrow back-Help-btn"><span class="fas fa-arrow-left"></span>Edit</li>
+                <li class="DCS"><a href="#">
+                    Data Coming Soon
+                  </a></li>
+              </ul>
+            </div>
+          </dist>
+        </div>
+      </div>
+      <div class="FileName">
+        <div class="NameBuffer"></div>
+        <div class="draggable FilenameName">Filename</div>
+        <div class="NameBuffer"></div>
+      </div>
+      <div class="Controls preventSelect">
+        <button id="minimize">&#8212</button>
+        <button id="maximize" value="Minimize">&#128470</button>
+        <button id="quit">&#10060</button>
+      </div>
+    </div>
+    <div class="Main">
+      <div class="SideBar">
+        <div class="SideBarMain">
+          <div class="Active">
+            <div class="Active_Top"> Active Fles:</div>
+            <div class="Active_list" style="display: none;">
+            </div>
+          </div>
+
+          <div class="Passive">
+            <div class="FolderTitle">Folders</div>
+            <div class="FolderList" style="display: none;">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="Center">
+        <div id="editor"></div>
+        <div class="StatsBar">Javascript</div>
+      </div>
+      <div class="Utility"></div>
+    </div>
+  </div>
+  <script type="text/javascript">
+    const drop_btn = document.querySelector(".drop-btn");
+    const tooltip = document.querySelector(".tooltip");
+
+    const menu_wrapper = document.querySelector(".wrapper");
+    const menu_bar = document.querySelector(".menu-bar");
+
+    const File_drop = document.querySelector(".File-drop");
+    const File_item = document.querySelector(".File-item");
+    const File_btn = document.querySelector(".back-File-btn");
+    const File_New = document.querySelector(".File-New");
+    const File_New_folder = document.querySelector(".File-New1");
+    const File_Open = document.querySelector(".File-Open");
+    const File_Open_folder = document.querySelector(".File-Open1");
+    const File_Close = document.querySelector(".File-Close");
+
+
+    const Edit_drop = document.querySelector(".Edit-drop");
+    const Edit_item = document.querySelector(".Edit-item");
+    const Edit_btn = document.querySelector(".back-Edit-btn");
+    const Edit_Undo = document.querySelector(".Edit-Undo");
+    const Edit_Redo = document.querySelector(".Edit-Redo");
+    const Edit_Copy = document.querySelector(".Edit-Copy");
+    const Edit_Cut = document.querySelector(".Edit-Cut");
+    const Edit_Paste = document.querySelector(".Edit-Paste");
+    const Edit_Find = document.querySelector(".Edit-Find");
+    const Edit_Replace = document.querySelector(".Edit-Replace");
+
+    const Preferences_drop = document.querySelector(".Prefrences-drop");
+    const Preferences_item = document.querySelector(".Prefrences-item");
+    const Preferences_btn = document.querySelector(".back-Prefrences-btn");
+    const Preferences_Themes = document.querySelector(".Prefrences-Themes");
+    const Preferences_Settings = document.querySelector(".Prefrences-Settings");
+
+    const Terminal_drop = document.querySelector(".Terminal-drop");
+    const Terminal_item = document.querySelector(".Terminal-item");
+    const Terminal_btn = document.querySelector(".back-Terminal-btn");
+    const Terminal_Create = document.querySelector(".Terminal-Create");
+    const Terminal_Split = document.querySelector(".Terminal-Split");
+    const Terminal_Destroy = document.querySelector(".Terminal-Destroy");
+
+    const Help_drop = document.querySelector(".Help-drop");
+    const Help_item = document.querySelector(".Help-item");
+    const Help_btn = document.querySelector(".back-Help-btn");
+    const Help_DCS = document.querySelector(".DCS");
+
+    var editor;
+
+    const Change_folder = document.querySelector(".Change-Folder");
+  </script>
+  <script type="text/javascript" src="js/titlebar.js"></script>
+  <script type="text/javascript" src="js/dropdown.js"></script>
+  <script type="text/javascript" src="js/folders.js"></script>
+  <script src="node_modules/monaco-editor/min/vs/loader.js"></script>
+	<script>
+		require.config({ paths: { vs: 'node_modules/monaco-editor/min/vs' } });
+
+		require(['vs/editor/editor.main'], function () {
+			const editor = monaco.editor.create(document.getElementById('editor'), {
+				value: ['function x() {', '\tconsole.log("Hello world!");', '}'].join('\n'),
+				language: 'javascript'
+			});
+		});
+	</script>
+  <script type="text/javascript" src="js/monaco.js"></script>
+</body>
+
+</html>
+
+<!---->

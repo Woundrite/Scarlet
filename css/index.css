@@ -1,0 +1,79 @@
+body{
+	padding: 0;
+	margin: 0;
+	height: 100vh;
+}
+
+body *{
+	box-sizing: border-box;
+}
+
+.Container{
+	height: 100%;
+	padding: 0;
+	display: grid;
+	grid-template-rows: auto 1fr;
+}
+
+.Title{
+	padding: 10px;
+	height: auto;
+	font-family: montserrat;
+	display: grid;
+	grid-auto-columns: auto 1fr;
+}
+
+.Controls{
+	float: right;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	margin-right: 5px;
+	width: 150px;
+}
+
+.navigation{
+	height: 3%;
+	width: 6%;
+}
+
+.Controls button{
+	outline: 0;
+	border: 0;
+	padding: 5px;
+	background: none;
+	color: #fff;
+	font-weight: bold;
+}
+
+.Controls button:hover{
+	background: #48494c;
+}
+
+.TitleBar{
+	background: #202327;
+	color: #fff;
+	size: 10pt;
+	display: grid;
+	grid-template-columns: auto 1fr auto;
+}
+
+.draggable{
+	-webkit-app-region: drag;
+}
+
+.non-draggable{
+	-webkit-app-region: nodrag;
+}
+
+.FileName{
+	display: grid;
+	grid-template-rows: 0.1fr 1fr 0.1fr;
+}
+
+.FilenameName{
+	padding: 1%;
+	font-size: 18px;
+ 	font-weight: 20;
+ 	color: #d6dae0;
+ 	font-family: 'Poppins', sans-serif;
+}

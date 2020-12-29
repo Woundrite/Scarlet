@@ -1,0 +1,158 @@
+body{
+	background: #1c1f23;
+}
+
+.Main{
+	display: grid;
+	z-index: 0;
+	grid-template-columns: auto 1fr auto;
+}
+
+.SideBar{
+	width: 215px;
+	background: #202020;
+}
+
+#editor {
+	all: unset;
+	width: 100%;
+	height: 100%;
+	border: 1px solid #ccc;
+}
+
+/*
+_____________________________________________________________________________________________
+_____________________________________________________________________________________________
+*/
+.SideBarMain{
+	display:grid;
+	grid-template-rows: minmax(35px, auto) minmax(35px, auto);
+}
+.Active{
+	color: white;
+	font-family: monospace;
+	white-space: nowrap;
+	overflow-y: scroll;
+	overflow-x: hidden;
+	display: block;
+	background: #252525;
+	margin: 5px;
+	border-radius: 4px;
+	padding: 5px;
+}
+
+.Active::-webkit-scrollbar {
+	width: 10px;
+	border-radius: 5;
+}
+
+	/* Track */
+.Active::-webkit-scrollbar-track {
+	background: #46464600;
+	border-radius: 5;
+	opacity: 0;
+}
+
+	/* Handle */
+.Active::-webkit-scrollbar-thumb {
+	background: #888;
+	border-radius: 5;
+}
+
+	/* Handle on hover */
+.Active::-webkit-scrollbar-thumb:hover {
+	background: #555;
+	border-radius: 5;
+}
+
+
+
+.Passive{
+	background: #252525;
+	margin: 5px;
+	color: white;
+	font-family: monospace;
+	white-space: nowrap;
+	border-radius: 4px;
+	overflow-x: hidden;
+	overflow-y: scroll;
+	display: block;
+	padding: 5px;
+}
+
+.Passive::-webkit-scrollbar {
+  width: 10px;
+  border-radius: 5;
+}
+
+/* Track */
+.Passive::-webkit-scrollbar-track {
+  background: #46464600;
+  border-radius: 5;
+  opacity: 0;
+}
+
+/* Handle */
+.Passive::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 5;
+}
+
+/* Handle on hover */
+.Passive::-webkit-scrollbar-thumb:hover {
+  background: #555;
+  border-radius: 5;
+}
+
+/*
+_____________________________________________________________________________________________
+_____________________________________________________________________________________________
+*/
+
+
+
+.FolderTitle{
+	font-size: 15px;
+	padding-left: 15px;
+}
+
+.FolderTitle:hover{
+	cursor: pointer;
+}
+
+.Active_list *:hover{
+	background: #202020;
+	padding-left: 16px;
+}
+
+.Active_list *, .Active_Top{
+	padding-left: 15px; 
+}
+
+.Active_Top:hover{
+	cursor: pointer;
+}
+
+.Center{
+	display: grid;
+	grid-auto-columns: 1fr;
+}
+
+.Center{
+	font-family: "Monaco", "Menlo", "Ubuntu Mono", "Droid Sans Mono", "Consolas", monospace !important;
+	font-size: 14px !important;
+	font-weight: 400 !important;
+	letter-spacing: 0 !important;
+	display: grid;
+	grid-template-rows: 1fr auto;
+}
+
+.StatsBar{
+	font-size:16px;
+	color: white;
+	float: right;
+}
+
+.Center *{
+	display: block;
+}
