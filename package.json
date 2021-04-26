@@ -1,5 +1,5 @@
 {
-  "name": "Scarlet",
+  "name": "scarlet",
   "version": "0.0.1",
   "description": "Scarlet Code Editor",
   "main": "index.js",
@@ -10,6 +10,8 @@
   "license": "ISC",
   "dependencies": {
     "electron-reload": "^1.5.0",
+    "file-api": "^0.10.4",
+    "monaco": "^1.201704190613.0",
     "monaco-editor": "^0.21.2"
   },
   "devDependencies": {

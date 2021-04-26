@@ -1,0 +1,10 @@
+.hideEditor, .hideEditor *{
+    display: none;
+}
+
+#editor_tag{
+    height: 100%;
+    width: 100px;
+    color: white;
+    background-color: transparent;
+}

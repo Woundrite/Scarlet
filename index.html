@@ -2,230 +2,315 @@
 <html>
 
 <head>
-  <title>
-    SCARLET
-  </title>
-  <link rel="stylesheet" href="css/index.css">
-  <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="css/dropdown.css">
+	<title>
+		SCARLET
+	</title>
+	<link rel="stylesheet" href="css/index.css">
+	<link rel="stylesheet" href="css/main.css">
+	<link rel="stylesheet" href="css/dropdown.css">
+	<link rel="stylesheet" href="css/utility.css">
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+	<link
+		rel="stylesheet"
+		data-name="vs/editor/editor.main"
+		href="node_modules/monaco-editor/min/vs/editor/editor.main.css"
+	/>
+
 </head>
-<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+<script src="js/icons.js"></script>
+<!-- <script type="text/javascript" src="Tulip-Editor/Tulip.js"></script> -->
 
 <body>
-  <div class="Container">
-    <div class="TitleBar">
-      <div class="Title" style="height: 100%; padding: 0; width: 9.5vw; z-index: 1;">
-        <div class="navigation" style="height: 100%; width: 100%;">
-          <dist style="height: 100%; width: 100%;">
-            <div class="intermediate" style="padding: 0; margin: 0; height: 100%; width: 100%;">
-              <div class="drop-btn non-draggable">
-                Scarlet
-              </div>
-            </div>
-            <div class="wrapper non-draggable">
-              <ul class="menu-bar">
-                <li class="File-item"><a href="#">
-                    File <i class="fas fa-angle-right"></i>
-                  </a></li>
-                <li class="Edit-item"><a href="#">
-                    Edit<i class="fas fa-angle-right"></i>
-                  </a></li>
-                <li class="Prefrences-item"><a href="#">
-                    Prefrences<i class="fas fa-angle-right"></i>
-                  </a></li>
-                <li class="Terminal-item"><a href="#">
-                    Terminal<i class="fas fa-angle-right"></i>
-                  </a></li>
-                <li class="Help-item"><a href="#">
-                    Help<i class="fas fa-angle-right"></i>
-                  </a></li>
-              </ul>
-              <!-- File Menu-items -->
-              <ul class="File-drop">
-                <li class="arrow back-File-btn"><span class="fas fa-arrow-left"></span>File</li>
-                <li class="File-New"><a href="#">
-                    New File &nbsp < <sup>CTRL+N</sup>>
-                  </a></li>
-                <li class="File-New1"><a href="#">
-                    New Folder &nbsp < <sup>CTRL+N</sup>>
-                  </a></li>
-                <li class="File-Open"><a href="#">
-                    Open File &nbsp < <sup>CTRL+O</sup>>
-                  </a></li>
-                <li class="File-Open1"><a href="#">
-                    Open Folder &nbsp < <sup>CTRL+Shift+O</sup>>
-                  </a></li>
-                <li>
-                  <hr>
-                </li>
-                <li class="File-Close"><a href="#">
-                    Close &nbsp < <sup>CTRL+Q</sup>>
-                  </a></li>
-              </ul>
-              <!-- Edit Menu-items -->
-              <ul class="Edit-drop">
-                <li class="arrow back-Edit-btn"><span class="fas fa-arrow-left"></span>Edit</li>
-                <li class="Edit-Undo"><a href="#">
-                    Undo &nbsp < <sup>CTRL+Z</sup>>
-                  </a></li>
-                <li class="Edit-Redo"><a href="#">
-                    Redo &nbsp < <sup>CTRL+Y</sup>>
-                  </a></li>
-                <li>
-                  <hr>
-                </li>
-                <li class="Edit-Copy"><a href="#">
-                    Copy &nbsp < <sup>CTRL+C</sup>>
-                  </a></li>
-                <li class="Edit-Cut"><a href="#">
-                    Cut &nbsp < <sup>CTRL+X</sup>>
-                  </a></li>
-                <li class="Edit-Paste"><a href="#">
-                    Paste &nbsp < <sup>CTRL+V</sup>>
-                  </a></li>
-                <li>
-                  <hr>
-                </li>
-                <li class="Edit-Find"><a href="#">
-                    Find &nbsp < <sup>CTRL+F</sup>>
-                  </a></li>
-                <li class="Edit-Replace"><a href="#">
-                    Replace &nbsp < <sup>CTRL+H</sup>>
-                  </a></li>
-              </ul>
+	<template id="editor_tag">
+		<div class="EditorParent">I like: </div>
+	</template>
+	<div class="Container">
+		<div class="TitleBar">
+			<div class="Title" style="height: 100%; padding: 0; width: 9.5vw; z-index: 1;">
+				<div class="navigation" style="height: 100%; width: 100%;">
+					<dist style="height: 100%; width: 100%;">
+						<div class="intermediate" style="padding: 0; margin: 0; height: 100%; width: 100%;">
+							<div class="drop-btn non-draggable">
+								Scarlet
+							</div>
+						</div>
+						<div class="wrapper non-draggable">
+							<ul class="menu-bar">
+								<li class="File-item"><a href="#">
+										File <i class="fas fa-angle-right"></i>
+									</a></li>
+								<li class="Edit-item"><a href="#">
+										Edit<i class="fas fa-angle-right"></i>
+									</a></li>
+								<li class="Prefrences-item"><a href="#">
+										Prefrences<i class="fas fa-angle-right"></i>
+									</a></li>
+								<li class="Terminal-item"><a href="#">
+										Terminal<i class="fas fa-angle-right"></i>
+									</a></li>
+								<li class="Help-item"><a href="#">
+										Help<i class="fas fa-angle-right"></i>
+									</a></li>
+							</ul>
+							<!-- File Menu-items -->
+							<ul class="File-drop">
+								<li class="arrow back-File-btn"><span class="fas fa-angle-left"></span>File</li>
+								<li class="File-New"><a href="#">
+										New File &nbsp < <sup>CTRL+N</sup>>
+									</a></li>
+								<li class="Folder-New"><a href="#">
+										<input type="file" id="OpenFile" name="OpenFile" onchange="openFile(this)" hidden="hidden">
+										New Folder &nbsp < <sup>CTRL+N</sup>>
+									</a></li>
+								<li class="File-Open"><a href="#">
+										Open File &nbsp < <sup>CTRL+O</sup>>
+									</a></li>
+								<li class="Folder-Open"><a href="#">
+										Open Folder &nbsp < <sup>CTRL+Shift+O</sup>>
+									</a></li>
+								<li>
+									<hr>
+								</li>
+								<li class="File-Close"><a href="#">
+										Close &nbsp < <sup>CTRL+Q</sup>>
+									</a></li>
+							</ul>
+							<!-- Edit Menu-items -->
+							<ul class="Edit-drop">
+								<li class="arrow back-Edit-btn"><span class="fas fa-angle-left"></span>Edit</li>
+								<li class="Edit-Undo"><a href="#">
+										Undo &nbsp < <sup>CTRL+Z</sup>>
+									</a></li>
+								<li class="Edit-Redo"><a href="#">
+										Redo &nbsp < <sup>CTRL+Y</sup>>
+									</a></li>
+								<li>
+									<hr>
+								</li>
+								<li class="Edit-Copy"><a href="#">
+										Copy &nbsp < <sup>CTRL+C</sup>>
+									</a></li>
+								<li class="Edit-Cut"><a href="#">
+										Cut &nbsp < <sup>CTRL+X</sup>>
+									</a></li>
+								<li class="Edit-Paste"><a href="#">
+										Paste &nbsp < <sup>CTRL+V</sup>>
+									</a></li>
+								<li>
+									<hr>
+								</li>
+								<li class="Edit-Find"><a href="#">
+										Find &nbsp < <sup>CTRL+F</sup>>
+									</a></li>
+								<li class="Edit-Replace"><a href="#">
+										Replace &nbsp < <sup>CTRL+H</sup>>
+									</a></li>
+							</ul>
 
-              <ul class="Prefrences-drop">
-                <li class="arrow back-Prefrences-btn"><span class="fas fa-arrow-left"></span>Edit</li>
-                <li class="Prefrences-Themes"><a href="#">
-                    Themes
-                  </a></li>
-                <li class="Prefrences-Settings"><a href="#">
-                    Settings
-                  </a></li>
-              </ul>
+							<ul class="Prefrences-drop">
+								<li class="arrow back-Prefrences-btn"><span class="fas fa-angle-left"></span>Edit</li>
+								<li class="Prefrences-Themes"><a href="#">
+										Themes
+									</a></li>
+								<li class="Prefrences-Settings"><a href="#">
+										Settings
+									</a></li>
+							</ul>
 
-              <ul class="Terminal-drop">
-                <li class="arrow back-Terminal-btn"><span class="fas fa-arrow-left"></span>Edit</li>
-                <li class="Terminal-Create"><a href="#">
-                    Create Terminal &nbsp < <sup>CTRL+Shift+T</sup> >
-                  </a></li>
-                <li class="Terminal-split"><a href="#">
-                    Split Terminal &nbsp < <sup>CTRL+Shift+P</sup> >
-                  </a></li>
-                <li class="Terminal-Destroy"><a href="#">
-                    Destroy Terminal &nbsp < <sup>CTRL+Shift+D</sup> >
-                  </a></li>
-              </ul>
+							<ul class="Terminal-drop">
+								<li class="arrow back-Terminal-btn"><span class="fas fa-angle-left"></span>Edit</li>
+								<li class="Terminal-Create"><a href="#">
+										Create Terminal &nbsp < <sup>CTRL+Shift+T</sup> >
+									</a></li>
+								<li class="Terminal-split"><a href="#">
+										Split Terminal &nbsp < <sup>CTRL+Shift+P</sup> >
+									</a></li>
+								<li class="Terminal-Destroy"><a href="#">
+										Destroy Terminal &nbsp < <sup>CTRL+Shift+D</sup> >
+									</a></li>
+							</ul>
 
-              <ul class="Help-drop">
-                <li class="arrow back-Help-btn"><span class="fas fa-arrow-left"></span>Edit</li>
-                <li class="DCS"><a href="#">
-                    Data Coming Soon
-                  </a></li>
-              </ul>
-            </div>
-          </dist>
-        </div>
-      </div>
-      <div class="FileName">
-        <div class="NameBuffer"></div>
-        <div class="draggable FilenameName">Filename</div>
-        <div class="NameBuffer"></div>
-      </div>
-      <div class="Controls preventSelect">
-        <button id="minimize">&#8212</button>
-        <button id="maximize" value="Minimize">&#128470</button>
-        <button id="quit">&#10060</button>
-      </div>
-    </div>
-    <div class="Main">
-      <div class="SideBar">
-        <div class="SideBarMain">
-          <div class="Active">
-            <div class="Active_Top"> Active Fles:</div>
-            <div class="Active_list" style="display: none;">
-            </div>
-          </div>
+							<ul class="Help-drop">
+								<li class="arrow back-Help-btn"><span class="fas fa-arrow-left"></span>Edit</li>
+								<li class="DCS"><a href="#">
+										Data Coming Soon
+									</a></li>
+							</ul>
+						</div>
+					</dist>
+				</div>
+			</div>
+			<div class="FileName">
+				<div class="NameBuffer"></div>
+				<div class="draggable FilenameName">Filename</div>
+				<div class="NameBuffer"></div>
+			</div>
+			<div class="Controls preventSelect">
+				<button id="minimize">&#8212</button>
+				<button id="maximize" value="Minimize">&#128470</button>
+				<button id="quit">&#10060</button>
+			</div>
+		</div>
+		<div class="Main">
+			<div class="SideBar">
+				<div class="SideBarMain">
+					<div class="Active">
+						<div class="Active_Top" style="font-family: Biome;"> <i class="fas fa-angle-right fa-angle-down" style="font-size: 15px !important;" id="ActiveIndicator"></i> ACTIVE EDITORS</div>
+						<div class="Active_list" style="display: none;">
+						</div>
+					</div>
 
-          <div class="Passive">
-            <div class="FolderTitle">Folders</div>
-            <div class="FolderList" style="display: none;">
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="Center">
-        <div id="editor"></div>
-        <div class="StatsBar">Javascript</div>
-      </div>
-      <div class="Utility"></div>
-    </div>
-  </div>
-  <script type="text/javascript">
-    const drop_btn = document.querySelector(".drop-btn");
-    const tooltip = document.querySelector(".tooltip");
+					<div class="Passive">
+						<div class="FolderTitle" style="font-family: Biome;"> <i class="fas fa-angle-right fa-angle-down" style="font-size: 15px !important;" id="FolderIndicator"></i> FOLDER NAME IN CAPS</div>
+						<div class="FolderList" style="display: none;">
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="Center">
+				<div class="editor" id="editor">
+					<div class="tabs"></div>
+					<div class="Tulip-MainDiv"></div>
+				</div>
+				<div class="StatsBar" style="font-family: Biome;">Javascript</div>
+			</div>
+			<div class="Utility">
+				<div style="width: 5vw; height: 5vh; border: none;"></div>
+				<div style="width: 100%; height: 100%" id="Utility">
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		document.getElementById("ActiveIndicator").classList.toggle("fa-angle-down")
+		document.getElementById("FolderIndicator").classList.toggle("fa-angle-down")
 
-    const menu_wrapper = document.querySelector(".wrapper");
-    const menu_bar = document.querySelector(".menu-bar");
+		const drop_btn = document.querySelector(".drop-btn");
+		const tooltip = document.querySelector(".tooltip");
 
-    const File_drop = document.querySelector(".File-drop");
-    const File_item = document.querySelector(".File-item");
-    const File_btn = document.querySelector(".back-File-btn");
-    const File_New = document.querySelector(".File-New");
-    const File_New_folder = document.querySelector(".File-New1");
-    const File_Open = document.querySelector(".File-Open");
-    const File_Open_folder = document.querySelector(".File-Open1");
-    const File_Close = document.querySelector(".File-Close");
+		const menu_wrapper = document.querySelector(".wrapper");
+		const menu_bar = document.querySelector(".menu-bar");
+
+		const File_drop = document.querySelector(".File-drop");
+		const File_item = document.querySelector(".File-item");
+		const File_btn = document.querySelector(".back-File-btn");
+		const File_New = document.querySelector(".File-New");
+		const File_New_folder = document.querySelector(".Folder-New");
+		const File_Open = document.querySelector(".File-Open");
+		const File_Open_folder = document.querySelector(".Folder-Open");
+		const File_Close = document.querySelector(".File-Close");
 
 
-    const Edit_drop = document.querySelector(".Edit-drop");
-    const Edit_item = document.querySelector(".Edit-item");
-    const Edit_btn = document.querySelector(".back-Edit-btn");
-    const Edit_Undo = document.querySelector(".Edit-Undo");
-    const Edit_Redo = document.querySelector(".Edit-Redo");
-    const Edit_Copy = document.querySelector(".Edit-Copy");
-    const Edit_Cut = document.querySelector(".Edit-Cut");
-    const Edit_Paste = document.querySelector(".Edit-Paste");
-    const Edit_Find = document.querySelector(".Edit-Find");
-    const Edit_Replace = document.querySelector(".Edit-Replace");
+		const Edit_drop = document.querySelector(".Edit-drop");
+		const Edit_item = document.querySelector(".Edit-item");
+		const Edit_btn = document.querySelector(".back-Edit-btn");
+		const Edit_Undo = document.querySelector(".Edit-Undo");
+		const Edit_Redo = document.querySelector(".Edit-Redo");
+		const Edit_Copy = document.querySelector(".Edit-Copy");
+		const Edit_Cut = document.querySelector(".Edit-Cut");
+		const Edit_Paste = document.querySelector(".Edit-Paste");
+		const Edit_Find = document.querySelector(".Edit-Find");
+		const Edit_Replace = document.querySelector(".Edit-Replace");
 
-    const Preferences_drop = document.querySelector(".Prefrences-drop");
-    const Preferences_item = document.querySelector(".Prefrences-item");
-    const Preferences_btn = document.querySelector(".back-Prefrences-btn");
-    const Preferences_Themes = document.querySelector(".Prefrences-Themes");
-    const Preferences_Settings = document.querySelector(".Prefrences-Settings");
+		const Preferences_drop = document.querySelector(".Prefrences-drop");
+		const Preferences_item = document.querySelector(".Prefrences-item");
+		const Preferences_btn = document.querySelector(".back-Prefrences-btn");
+		const Preferences_Themes = document.querySelector(".Prefrences-Themes");
+		const Preferences_Settings = document.querySelector(".Prefrences-Settings");
 
-    const Terminal_drop = document.querySelector(".Terminal-drop");
-    const Terminal_item = document.querySelector(".Terminal-item");
-    const Terminal_btn = document.querySelector(".back-Terminal-btn");
-    const Terminal_Create = document.querySelector(".Terminal-Create");
-    const Terminal_Split = document.querySelector(".Terminal-Split");
-    const Terminal_Destroy = document.querySelector(".Terminal-Destroy");
+		const Terminal_drop = document.querySelector(".Terminal-drop");
+		const Terminal_item = document.querySelector(".Terminal-item");
+		const Terminal_btn = document.querySelector(".back-Terminal-btn");
+		const Terminal_Create = document.querySelector(".Terminal-Create");
+		const Terminal_Split = document.querySelector(".Terminal-Split");
+		const Terminal_Destroy = document.querySelector(".Terminal-Destroy");
 
-    const Help_drop = document.querySelector(".Help-drop");
-    const Help_item = document.querySelector(".Help-item");
-    const Help_btn = document.querySelector(".back-Help-btn");
-    const Help_DCS = document.querySelector(".DCS");
+		const Help_drop = document.querySelector(".Help-drop");
+		const Help_item = document.querySelector(".Help-item");
+		const Help_btn = document.querySelector(".back-Help-btn");
+		const Help_DCS = document.querySelector(".DCS")
 
-    var editor;
+		const Tulip = document.querySelector(".Tulip-MainDiv")
 
-    const Change_folder = document.querySelector(".Change-Folder");
-  </script>
-  <script type="text/javascript" src="js/titlebar.js"></script>
-  <script type="text/javascript" src="js/dropdown.js"></script>
-  <script type="text/javascript" src="js/folders.js"></script>
-  <script src="node_modules/monaco-editor/min/vs/loader.js"></script>
-	<script>
-		require.config({ paths: { vs: 'node_modules/monaco-editor/min/vs' } });
+		const Change_folder = document.querySelector(".Change-Folder");
+		const ROFile = document.querySelector("#OpenFile");
 
-		require(['vs/editor/editor.main'], function () {
-			const editor = monaco.editor.create(document.getElementById('editor'), {
-				value: ['function x() {', '\tconsole.log("Hello world!");', '}'].join('\n'),
-				language: 'javascript'
-			});
-		});
+		const TABS = document.querySelector(".tabs")
+
+		const CURRTHEME = "vs-dark";
+
+		const print = console.log;
+
+		let Extensions = {"JS"  :"javascript", "PY"  : "python",  "TS"  : "typescript", "YAML": "yaml",     "C"  : "c", 
+						  "CPP" :"cpp",        "CS"  : "csharp",  "DART": "dart",       "F#"  : "fsharp",   "GO" : "go",
+						  "HTML":"html",       "JAVA": "java",    "JSON": "json",       "KT"  : "kotlin",   "KTS": "kotlin",
+						  "KT"  :"kotlin",     "LUA" : "lua",     "JL"  : "julia",      "LESS": "less",     "PL" : "perl",
+						  "GITIGNORE": "plain","HTM" : "html",    "CSS" : "css",        "H"   : "cpp",      "hpp": "cpp",
+						  "cxx" :"cpp",        "pyx" : "python"};
 	</script>
-  <script type="text/javascript" src="js/monaco.js"></script>
+	<!-- <script>
+		CreateTulip(Tulip)
+		UtilityInit()
+	</script> -->
+	
+	
+	<script type="text/javascript" src="js/titlebar.js"></script>
+	<script type="text/javascript" src="js/folders.js"></script>
+	<script type="text/javascript" src="js/Utility.js"></script>
+	<script type="text/javascript" src="js/file.js"></script>
+	<script src="vs/loader.js"></script>
+	<script src="vs/editor/editor.main.nls.js"></script>
+	<script src="vs/editor/editor.main.js"></script>
+	<script type="text/javascript" src="js/dropdown.js"></script>
+	<script>
+		let Editor = monaco.editor.create(Tulip, {
+			value: "",
+			language: "plane",
+
+			fontFamily: "SourceCodePro",
+			colorDecorators: true,
+			dragAndDrop: true,
+			emptySelectionClipboard: true,
+			folding: true,
+			cursorSmoothCaretAnimation: true,
+			cursorWidth: 2,
+			definitionLinkOpensInPeek: true,
+			formatOnPaste: true,
+			formatOnType: true,
+			mouseWheelZoom: true,
+			renderControlCharacters: true,
+			showUnused: true,
+			smoothScrolling: true,
+			tabCompletion: "onlySnippets",
+			lineNumbers: "on",
+			roundedSelection: false,
+			scrollBeyondLastLine: false,
+			readOnly: false,
+			theme: CURRTHEME,
+			
+		});
+
+		monaco.languages.registerColorProvider("css", {
+			provideColorPresentations: (model, colorInfo) => {
+				var color = colorInfo.color;
+				var red256 = Math.round(color.red * 255);
+				var green256 = Math.round(color.green * 255);
+				var blue256 = Math.round(color.blue * 255);
+				var label;
+				if (color.alpha === 1) {
+					label = "rgb(" + red256 + ", " + green256 + ", " + blue256 + ")";
+				} else {
+					label = "rgba(" + red256 + ", " + green256 + ", " + blue256 + ", " + color.alpha + ")";
+				}
+
+				return [
+					{
+						label: label
+					}
+				];
+			},
+
+			})
+	</script>
 </body>
 
 </html>

@@ -1,3 +1,13 @@
+@font-face{
+	font-family: "Biome";
+	src: url("../Fonts/Biome.ttf") format("truetype");
+}
+
+@font-face{
+	font-family: "SourceCodePro";
+	src: url("../Fonts/SourceCodePro.ttf") format("truetype");
+}
+
 body{
 	background: #1c1f23;
 }
@@ -13,11 +23,22 @@ body{
 	background: #202020;
 }
 
-#editor {
+.editor {
 	all: unset;
 	width: 100%;
 	height: 100%;
-	border: 1px solid #ccc;
+	border: none;
+	max-height: 100%;
+	display: grid;
+	grid-template-rows: 5vh 85vh;
+}
+
+.tabs{
+	height: 5%;
+}
+
+.Tulip-MainDiv{
+	height: 95%;
 }
 
 /*
@@ -30,12 +51,12 @@ ________________________________________________________________________________
 }
 .Active{
 	color: white;
-	font-family: monospace;
+	font-family: Biome;
 	white-space: nowrap;
 	overflow-y: scroll;
 	overflow-x: hidden;
 	display: block;
-	background: #252525;
+	background: #202020;
 	margin: 5px;
 	border-radius: 4px;
 	padding: 5px;
@@ -68,10 +89,10 @@ ________________________________________________________________________________
 
 
 .Passive{
-	background: #252525;
+	background: #202020;
 	margin: 5px;
 	color: white;
-	font-family: monospace;
+	font-family: Biome;
 	white-space: nowrap;
 	border-radius: 4px;
 	overflow-x: hidden;
@@ -113,7 +134,7 @@ ________________________________________________________________________________
 
 .FolderTitle{
 	font-size: 15px;
-	padding-left: 15px;
+	padding-left: 7px;
 }
 
 .FolderTitle:hover{
@@ -126,7 +147,7 @@ ________________________________________________________________________________
 }
 
 .Active_list *, .Active_Top{
-	padding-left: 15px; 
+	padding-left: 7px;
 }
 
 .Active_Top:hover{
@@ -134,17 +155,13 @@ ________________________________________________________________________________
 }
 
 .Center{
-	display: grid;
-	grid-auto-columns: 1fr;
-}
-
-.Center{
 	font-family: "Monaco", "Menlo", "Ubuntu Mono", "Droid Sans Mono", "Consolas", monospace !important;
 	font-size: 14px !important;
 	font-weight: 400 !important;
 	letter-spacing: 0 !important;
+	grid-template-rows: 90vh 5vh;
 	display: grid;
-	grid-template-rows: 1fr auto;
+	grid-auto-columns: 1fr;
 }
 
 .StatsBar{
@@ -153,6 +170,6 @@ ________________________________________________________________________________
 	float: right;
 }
 
-.Center *{
+.editor, .tabs, .Tulip-MainDiv{
 	display: block;
 }

@@ -1,6 +1,5 @@
 drop_btn.onclick = () => {
   menu_wrapper.classList.toggle("show");
-  console.log("Shown/hidden...");
 };
 
 File_item.onclick = () => {
@@ -63,3 +62,8 @@ Help_btn.onclick = () => {
   Help_drop.style.display = "none";
   menu_bar.style.marginLeft = "0px";
 };
+
+File_Open.onclick = () => {
+  ROFile.click();
+  openFile(ROFile.value)
+}

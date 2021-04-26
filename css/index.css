@@ -4,9 +4,9 @@ body{
 	height: 100vh;
 }
 
-body *{
+/* body *{
 	box-sizing: border-box;
-}
+} */
 
 .Container{
 	height: 100%;
@@ -77,3 +77,4 @@ body *{
  	color: #d6dae0;
  	font-family: 'Poppins', sans-serif;
 }
+

@@ -1,0 +1,64 @@
+@font-face{
+  font-family: "Biome";
+  src: url("../Fonts/Biome.ttf") format("truetype");
+}
+
+.tabhint {
+  position: relative;
+  display: inline-block;
+}
+
+.tabhint .tabhinttext {
+  visibility: hidden;
+  width: 100px;
+  background-color: #202020;
+  font-family: Biome;
+  font-weight: bold;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  right: 110%;
+}
+
+.tabhinttext{
+  width: auto !important;
+  padding-left: 5px !important;
+  padding-right: 5px !important;
+}
+
+.tabhint .tabhinttext::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  margin-top: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent transparent black;
+}
+.tabhint:hover .tabhinttext {
+  visibility: visible;
+}
+
+.Utility{
+  width: 5vw;
+  display: grid;
+  grid-template-rows: auto 1fr;
+}
+
+.frameDisplay{
+  display: block !important;
+  z-index: 3;
+}
+
+.frame{
+  display: none;
+  position: absolute !important;
+  right: 5.5vw;
+  width: 30vw;
+  height: 90vh;
+  z-index: 0;
+}

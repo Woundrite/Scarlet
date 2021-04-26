@@ -1,0 +1,31 @@
+{
+	"NOTE": "Editing this file incorrectly ma cause the editor to not work properly, only edit this file if you know what you are doing",
+	"Navigations Extra" : {
+	},
+	"UtilityTabs":{
+		"Youtube" : {
+			"Link" : "https://www.youtube.com",
+			"Icon" : "https://www.youtube.com/s/desktop/a4d390aa/img/favicon_144.png"
+		},
+		"Github" : {
+			"Link" : "https://www.github.com",
+			"Icon" : "https://github.githubassets.com/favicons/favicon-dark.png"
+		},
+		"Stack Overflow" : {
+			"Link" : "https://www.stackoverflow.com",
+			"Icon" : "https://cdn.sstatic.net/Sites/stackoverflow/Img/apple-touch-icon.png?v=c78bd457575a"
+		},
+		"Python Anywhere" : {
+			"Link" : "https://www.pythonanywhere.com/",
+			"Icon" : "https://www.pythonanywhere.com/static/anywhere/images/PA-logo-large-icononly.png"
+		},
+		"Font Awesome" : {
+			"Link" : "https://www.fontawesome.com/",
+			"Icon" : "https://www.fontawesome.com/images/favicons/apple-icon-57x57.png"
+		},
+		"cdn js" : {
+			"Link" : "https://www.cdnjs.com/",
+			"Icon" : "https://cdnjs.com/favicon.png"
+		}
+	}
+}

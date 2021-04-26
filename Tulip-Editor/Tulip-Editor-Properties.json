@@ -1,0 +1,35 @@
+{
+    "NOTE": "Editing this file incorrectly ma cause the editor to not work properly, only edit this file if you know what you are doing",
+    "Editor": {
+        "Font": "Source Code Pro",
+        "Indentation": "4",
+        "KeyEventListener":{
+            "COPY" : "CTRL+C",
+            "CUT" : "CTRL+X",
+            "PASTE" : "CTRL+V",
+            "SAVE" : "CTRL+S",
+            "SAVEAS" : "CTRL+SHIFT+S",
+            "OPEN" : "CTRL+O",
+            "PANEL" : "CTRL+P",
+            "UNDO" : "CTRL+Z",
+            "REDO" : "CTRL+Y",
+            "QUIT" : "CTRL+Q",
+            "RELOAD" : "CTRL+R",
+            "SELECT DUPLICATE" : "CTRL+D"
+
+        },
+        "Themes" : {
+            "Light":[
+                "Tulip-Default-Light"
+            ],
+            "Dark" : [
+                "Tulip-Dafault-Dark"
+            ]
+        },
+        "Current-Theme" : "Tulip-Default-Light",
+        "Extensions" : [],
+        "EnabledExtensions" : [],
+        "Fonts" : ["monaco", "monofur", "SourceCodePro", "Typewriter"]
+    },
+    "StartUp":{}
+}

@@ -20,7 +20,8 @@ function createWindow () {
     backgroundColor: "#16181A",
     webPreferences: {
       nodeIntegration: true,
-      enableRemoteModule: true
+      enableRemoteModule: true,
+      contextIsolation: false,
     }
   })
 
