@@ -5,16 +5,19 @@
 	<title>
 		SCARLET
 	</title>
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 	<link rel="stylesheet" href="css/index.css">
 	<link rel="stylesheet" href="css/main.css">
 	<link rel="stylesheet" href="css/dropdown.css">
 	<link rel="stylesheet" href="css/utility.css">
-	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-	<link
-		rel="stylesheet"
-		data-name="vs/editor/editor.main"
-		href="node_modules/monaco-editor/min/vs/editor/editor.main.css"
-	/>
+	<link rel="stylesheet" href="css/files.css">
+	<link rel="stylesheet" data-name="vs/editor/editor.main" href="node_modules/monaco-editor/min/vs/editor/editor.main.css"/>
+	<style>
+		@font-face{
+			font-family: "monaco";
+			src: url("Fonts/monaco.ttf") format("truetype");
+		}
+	</style>
 
 </head>
 <script src="js/icons.js"></script>
@@ -236,6 +239,8 @@
 
 		const TABS = document.querySelector(".tabs")
 
+		const StatsBar = document.querySelector(".StatsBar")
+
 		const CURRTHEME = "vs-dark";
 
 		const print = console.log;
@@ -262,11 +267,11 @@
 	<script src="vs/editor/editor.main.js"></script>
 	<script type="text/javascript" src="js/dropdown.js"></script>
 	<script>
+
 		let Editor = monaco.editor.create(Tulip, {
 			value: "",
 			language: "plane",
 
-			fontFamily: "SourceCodePro",
 			colorDecorators: true,
 			dragAndDrop: true,
 			emptySelectionClipboard: true,
@@ -286,30 +291,31 @@
 			scrollBeyondLastLine: false,
 			readOnly: false,
 			theme: CURRTHEME,
+			fontFamily: 'monaco'
 			
 		});
 
-		monaco.languages.registerColorProvider("css", {
-			provideColorPresentations: (model, colorInfo) => {
-				var color = colorInfo.color;
-				var red256 = Math.round(color.red * 255);
-				var green256 = Math.round(color.green * 255);
-				var blue256 = Math.round(color.blue * 255);
-				var label;
-				if (color.alpha === 1) {
-					label = "rgb(" + red256 + ", " + green256 + ", " + blue256 + ")";
-				} else {
-					label = "rgba(" + red256 + ", " + green256 + ", " + blue256 + ", " + color.alpha + ")";
-				}
+		// monaco.languages.registerColorProvider("css", {
+		// 	provideColorPresentations: (model, colorInfo) => {
+		// 		var color = colorInfo.color;
+		// 		var red256 = Math.round(color.red * 255);
+		// 		var green256 = Math.round(color.green * 255);
+		// 		var blue256 = Math.round(color.blue * 255);
+		// 		var label;
+		// 		if (color.alpha === 1) {
+		// 			label = "rgb(" + red256 + ", " + green256 + ", " + blue256 + ")";
+		// 		} else {
+		// 			label = "rgba(" + red256 + ", " + green256 + ", " + blue256 + ", " + color.alpha + ")";
+		// 		}
 
-				return [
-					{
-						label: label
-					}
-				];
-			},
+		// 		return [
+		// 			{
+		// 				label: label
+		// 			}
+		// 		];
+		// 	},
 
-			})
+		// 	})
 	</script>
 </body>
 

@@ -1,10 +1,13 @@
-.hideEditor, .hideEditor *{
-    display: none;
-}
-
-#editor_tag{
+.EditorHeader{
     height: 100%;
     width: 100px;
     color: white;
     background-color: transparent;
+    text-align: center;
+    padding: 10px;
+}
+
+.EditorHeader:focus{
+    border: 0px 0px 0px 1px solid #54f;
+    background-color: #101010
 }
